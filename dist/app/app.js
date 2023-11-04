@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.app = void 0;
+const express_1 = __importDefault(require("express"));
+const cors = require("cors");
+const middlewares_1 = require("./middlewares");
+const path_1 = __importDefault(require("path"));
+const postArduinoController_1 = require("./controlers/postArduinoController");
+const getArduinoController_1 = require("./controlers/getArduinoController");
+exports.app = (0, express_1.default)();
+const publickPath = path_1.default.join(__dirname, "../../public");
+exports.app.use(cors());
+exports.app.use(express_1.default.json());
+exports.app.use((0, middlewares_1.morganLogger)(middlewares_1.morganSetup));
+exports.app.use(express_1.default.static(publickPath));
+exports.app.post("/", (0, middlewares_1.controllerWraper)(postArduinoController_1.postArduinoController));
+exports.app.get("/data", (0, middlewares_1.controllerWraper)(getArduinoController_1.getArduinoController));
+exports.app.use("/", (0, middlewares_1.controllerWraper)(middlewares_1.defaultError));
+exports.app.use(middlewares_1.errorCatcher);

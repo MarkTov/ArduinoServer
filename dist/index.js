@@ -10,9 +10,5 @@ console.log("Starting app");
 app_1.app.listen(Number(3001), () => {
     console.log(`Server runnig on port ${dotenv.parsed.PORT}`);
 });
-mongoose_1.default.set("strictQuery", false);
-if (typeof dotenv.parsed.MDB_CONNECTION === "string") {
-    mongoose_1.default.connect(dotenv.parsed.MDB_CONNECTION).then(() => {
-        console.log("Database connected");
-    });
-}
+
+

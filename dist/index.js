@@ -8,7 +8,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv = require("dotenv").config();
 console.log("Starting app");
 app_1.app.listen(Number(3001), () => {
-    console.log(`Server runnig on port ${dotenv.parsed.PORT}`);
+    console.log(`Server runnig on port`);
 });
 
 

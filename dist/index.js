@@ -7,7 +7,7 @@ const app_1 = require("./app/app");
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv = require("dotenv").config();
 console.log("Starting app");
-app_1.app.listen(dotenv.parsed.PORT, () => {
+app_1.app.listen(Number(dotenv.parsed.PORT), () => {
     console.log(`Server runnig on port ${dotenv.parsed.PORT}`);
 });
 mongoose_1.default.set("strictQuery", false);
